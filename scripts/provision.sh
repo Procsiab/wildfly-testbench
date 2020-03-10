@@ -1,5 +1,5 @@
 # Install tools
-sudo dnf install -y unzip wget java
+sudo dnf install -y unzip wget tmux java
 
 # Download and extract WildFly
 pushd /vagrant

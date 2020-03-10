@@ -31,10 +31,12 @@ tmux unbind-key -T prefix C-b
 tmux bind-key -T prefix C-a send-prefix
 for _pane in $(tmux list-panes -F '#P' -t wildfly-testbench); do
     tmux send-keys -t wildfly-testbench:1.${_pane} 'tmux' Enter
+    sleep 1
 done
 # Show the IP address in the statusbar
 for _pane in $(tmux list-panes -F '#P' -t wildfly-testbench); do
     tmux send-keys -t wildfly-testbench:1.${_pane} 'tmux set -g status-right " \"#{=21:pane_title}\" [$(ip addr show eth0 | grep -w "inet" | grep -oE "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | head -n1)] %H:%M %d-%b-%y"' Enter
+    sleep 1
 done
 # Clear the terminal's screens
 for _pane in $(tmux list-panes -F '#P' -t wildfly-testbench); do
